@@ -1,1 +1,70 @@
 
+class Register:
+
+    def registering(self):
+
+        firstname = raw_input("Please Enter Your firstname. ")
+        if firstname == "":
+            print("You have not entered a Firstname Please try again")
+            exit()
+        else:
+            print("you have entered " + firstname)
+
+        surname = raw_input("Please Enter Your Surname. ")
+        if firstname == "":
+            print("You have not entered a Surname")
+            exit()
+        else:
+            print("you have entered " + surname)
+
+        universityusername = raw_input("Please enter your username. ")
+        if universityusername == "":
+            print("You have not entered a univerityusername Please try again")
+            exit()
+        else:
+            print("you have entered " + universityusername)
+
+        universitypassword = raw_input("Please enter a password that is longer than 6 Characters. ")
+        if len(universitypassword) <= 6:
+           print("you have not entered a password that is longer than 6 digits")
+           print("please try again")
+           exit()
+        else:
+           print("The Password You've entered is acceptable")
+
+        universityid = raw_input("Pleaes enter your ID ")
+        if universityid.isdigit():
+            print("you have entered a correct ID")
+            firstname_info = firstname
+            surname_info = surname
+            universityusername_info = universityusername
+            universitypassword_info = universitypassword
+            universityid_info = universityid
+            with open("studentlogindetails.txt", "a+") as o:
+                o.write("\n" +  firstname_info + "     " + surname_info + "     " + universityusername_info + "     " + universitypassword_info + "     " + universityid_info)
+            del firstname_info
+            del surname_info
+            del universitypassword_info
+            del universityid_info
+            f.close()
+            print("Your details have been uploaded")
+            print("if you want to register another user press y if not press any other key")
+            userinput = input()
+            while userinput == "y":
+                mysecondclass = Register
+                mysecondclass.registering()
+            else:
+                print("goodbye")
+                exit()
+        else:
+            print("you have entered a letter in the id box or the length of your id is invald")
+            print("please try again")
+            exit()
+        return
+
+
+myclass = Register()
+myclass.registering()
+
+
+
